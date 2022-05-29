@@ -4,8 +4,6 @@ library("ggpubr")
 
 #Soal 1
 
-subject = c(seq(1:9))
-
 #A
 kadarSebelum = c(78,75,67,77,70,72,78,74,77)
 kadarSesudah = c(100,95,70,90,90,90,89,90,100)
@@ -21,14 +19,19 @@ t.test(kadarSebelum, kadarSesudah, paired = TRUE)
 
 #Soal 2
 
+zsum.test(
+  mean.x=23500, sigma.x = 3900, n.x = 100,  
+  alternative = "two.sided", mu = 20000,
+  conf.level = 0.95
+)
+
 #A
 # Setuju, Mobil dikemudikan dapat memiliki rata-rata lebih dari
 # 20000 kilometer per tahun dikarenakan kesimpulan dari uji z menolak H0
 
 
 #B
-tsum.test(23500, 3900, 100)
-#(Rata-rata, standar deviasi, pemilik mobil)
+
 
 #C
 #karena p-value kurang dari 0.05 yang menyebabkan h0 ditolak
@@ -88,6 +91,7 @@ model1 = lm(Length ~ Group, data = data)
 anova(model1)
 
 #D
+
 
 #E
 TukeyHSD(aov(model1))
