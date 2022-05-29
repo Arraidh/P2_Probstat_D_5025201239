@@ -1,4 +1,7 @@
 
+library(BSDA)
+library("ggpubr")
+
 #Soal 1
 
 subject = c(seq(1:9))
@@ -6,26 +9,37 @@ subject = c(seq(1:9))
 #A
 kadarSebelum = c(78,75,67,77,70,72,78,74,77)
 kadarSesudah = c(100,95,70,90,90,90,89,90,100)
-data_frame = data.frame(subject, kadarSebelum, kadarSesudah)
 
-sd(data_frame$kadarSebelum-data_frame$kadarSesudah)
+sd(mean(kadarSesudah-kadarSebelum))
 
 #B
-t.test(kadarSebelum, kadarSesudah, alternative = "greater", var.equal = FALSE)
+t.test(kadarSebelum, kadarSesudah, paired = TRUE)
 
 #C
-# Terdapat pengaruh signifikan secara statistika terkaut kadar saturasi oksigen sebelum dan sesudah aktivitas A
-# Hal ini dikarenakan nilai t lebih besar dari nilai kritis t dengan tingkat signifikansi 5%
+# Tidak terdapat pengaruh signifikan secara statistika terkaut kadar saturasi oksigen sebelum dan sesudah aktivitas A
+# Hal ini dikarenakan nilai t lebih kecil dari nilai kritis t dengan tingkat signifikansi 5%
 
 #Soal 2
-install.packages("BSDA")
-library(BSDA)
+
+#A
+# Setuju, Mobil dikemudikan dapat memiliki rata-rata lebih dari
+# 20000 kilometer per tahun dikarenakan kesimpulan dari uji z menolak H0
+
 
 #B
 tsum.test(23500, 3900, 100)
 #(Rata-rata, standar deviasi, pemilik mobil)
 
+#C
+#karena p-value kurang dari 0.05 yang menyebabkan h0 ditolak
+#maka, kesimpulannyaadalah bahwa mobil dikemudikan rata-rata lebih dari 20.000 kilometer per tahun
+
+
 #Soal 3
+#A
+#H0 : mu = mu0 
+#mu != mu0
+
 #B
 tsum.test(mean.x=3.64,
           s.x = 1.67,
